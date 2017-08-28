@@ -54,4 +54,8 @@ class Commentstatus extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Comment::className(), ['status' => 'id']);
     }
+
+    public static function statusArray() {
+        return Commentstatus::find()->select(['name','id'])->orderBy('position')->indexBy('id')->column();
+    }
 }
